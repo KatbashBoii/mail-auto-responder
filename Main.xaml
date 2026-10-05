@@ -172,7 +172,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1176,7274" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1176,7551" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="ticketCounter" />
       <Variable x:TypeArguments="sd:DataTable" Name="auditTable" />
@@ -181,14 +181,15 @@
       <Variable x:TypeArguments="x:String" Name="mail" />
       <Variable x:TypeArguments="sd:DataTable" Name="dtRules" />
       <Variable x:TypeArguments="x:String" Name="TicketID" />
+      <Variable x:TypeArguments="x:String" Name="EmailAddress" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BuildDataTable DataTable="[auditTable]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="796,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Ticket_x0020_ID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sender&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Subject&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Keyword&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <Assign sap:VirtualizedContainerService.HintSize="796,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <ui:BuildDataTable DataTable="[auditTable]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="658,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_2" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Ticket_x0020_ID&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Sender&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Subject&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Keyword&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <Assign sap:VirtualizedContainerService.HintSize="658,175" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[ticketCounter]</OutArgument>
       </Assign.To>
@@ -196,15 +197,15 @@
         <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
       </Assign.Value>
     </Assign>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="796,6984" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="658,7261" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="794,5649" sap2010:WorkflowViewState.IdRef="Sequence_24">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="656,5926" sap2010:WorkflowViewState.IdRef="Sequence_24">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uga:ForEachEmailConnections ConnectionAccountName="{x:Null}" CurrentIndex="{x:Null}" Filter="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" Length="{x:Null}" ManualEntryFolder="{x:Null}" QueryFilter="{x:Null}" AllLabels="W3siSWQiOiJDSEFUIiwiTmFtZSI6IkNIQVQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNFTlQiLCJOYW1lIjoiU0VOVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiSU5CT1giLCJOYW1lIjoiSU5CT1giLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IklNUE9SVEFOVCIsIk5hbWUiOiJJTVBPUlRBTlQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlRSQVNIIiwiTmFtZSI6IlRSQVNIIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJEUkFGVCIsIk5hbWUiOiJEUkFGVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiU1BBTSIsIk5hbWUiOiJTUEFNIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9GT1JVTVMiLCJOYW1lIjoiQ0FURUdPUllfRk9SVU1TIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9VUERBVEVTIiwiTmFtZSI6IkNBVEVHT1JZX1VQREFURVMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiTmFtZSI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9QUk9NT1RJT05TIiwiTmFtZSI6IkNBVEVHT1JZX1BST01PVElPTlMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1NPQ0lBTCIsIk5hbWUiOiJDQVRFR09SWV9TT0NJQUwiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IllFTExPV19TVEFSIiwiTmFtZSI6IllFTExPV19TVEFSIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJTVEFSUkVEIiwiTmFtZSI6IlNUQVJSRUQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlVOUkVBRCIsIk5hbWUiOiJVTlJFQUQiLCJUeXBlIjoic3lzdGVtIn1d" AuthScopesInvalid="False" BrowserFolder="Inbox" BrowserFolderLabelId="INBOX" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" CurrentItemVariableName="CurrentEmail" DisplayName="For Each Email" FilterSelectionMode="ConditionBuilder" FolderInputSelectionMode="Browse" sap:VirtualizedContainerService.HintSize="760,5084" sap2010:WorkflowViewState.IdRef="ForEachEmailConnections_2" ImportantOnly="False" IncludeSubfolders="False" MarkAsRead="False" MaxResults="20" StarredOnly="False" UnreadOnly="True" UseConnectionService="True" WithAttachmentsOnly="False">
+          <uga:ForEachEmailConnections ConnectionAccountName="{x:Null}" CurrentIndex="{x:Null}" Filter="{x:Null}" FolderIdBackup="{x:Reference __ReferenceID0}" Length="{x:Null}" ManualEntryFolder="{x:Null}" QueryFilter="{x:Null}" AllLabels="W3siSWQiOiJDSEFUIiwiTmFtZSI6IkNIQVQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNFTlQiLCJOYW1lIjoiU0VOVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiSU5CT1giLCJOYW1lIjoiSU5CT1giLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IklNUE9SVEFOVCIsIk5hbWUiOiJJTVBPUlRBTlQiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlRSQVNIIiwiTmFtZSI6IlRSQVNIIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJEUkFGVCIsIk5hbWUiOiJEUkFGVCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiU1BBTSIsIk5hbWUiOiJTUEFNIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9GT1JVTVMiLCJOYW1lIjoiQ0FURUdPUllfRk9SVU1TIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9VUERBVEVTIiwiTmFtZSI6IkNBVEVHT1JZX1VQREFURVMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiTmFtZSI6IkNBVEVHT1JZX1BFUlNPTkFMIiwiVHlwZSI6InN5c3RlbSJ9LHsiSWQiOiJDQVRFR09SWV9QUk9NT1RJT05TIiwiTmFtZSI6IkNBVEVHT1JZX1BST01PVElPTlMiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IkNBVEVHT1JZX1NPQ0lBTCIsIk5hbWUiOiJDQVRFR09SWV9TT0NJQUwiLCJUeXBlIjoic3lzdGVtIn0seyJJZCI6IlNUQVJSRUQiLCJOYW1lIjoiU1RBUlJFRCIsIlR5cGUiOiJzeXN0ZW0ifSx7IklkIjoiVU5SRUFEIiwiTmFtZSI6IlVOUkVBRCIsIlR5cGUiOiJzeXN0ZW0ifV0=" AuthScopesInvalid="False" BrowserFolder="Inbox" BrowserFolderLabelId="INBOX" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" CurrentItemVariableName="CurrentEmail" DisplayName="For Each Email" FilterSelectionMode="ConditionBuilder" FolderInputSelectionMode="Browse" sap:VirtualizedContainerService.HintSize="622,5361" sap2010:WorkflowViewState.IdRef="ForEachEmailConnections_2" ImportantOnly="False" IncludeSubfolders="False" MarkAsRead="False" MaxResults="20" StarredOnly="False" UnreadOnly="True" UseConnectionService="True" WithAttachmentsOnly="False">
             <uga:ForEachEmailConnections.Body>
               <ActivityAction x:TypeArguments="ugm:GmailMessage, x:Int32">
                 <ActivityAction.Argument1>
@@ -213,7 +214,7 @@
                 <ActivityAction.Argument2>
                   <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentEmailIndex" />
                 </ActivityAction.Argument2>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="758,4839" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="620,5116" sap2010:WorkflowViewState.IdRef="Sequence_29">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="responseText" />
                   </Sequence.Variables>
@@ -222,7 +223,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="724,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="586,180" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
@@ -244,15 +245,15 @@
                       </scg:List>
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
-                  <If Condition="[CurrentEmail.Subject.ToLower().Contains(&quot;help desk&quot;)]" sap:VirtualizedContainerService.HintSize="724,4599" sap2010:WorkflowViewState.IdRef="If_9">
+                  <If Condition="[CurrentEmail.Subject.ToLower().Contains(&quot;help desk&quot;)]" sap:VirtualizedContainerService.HintSize="586,4876" sap2010:WorkflowViewState.IdRef="If_9">
                     <If.Then>
-                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="722,3688" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="584,3965" sap2010:WorkflowViewState.IdRef="Sequence_31">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ueab:ExcelApplicationCard CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="688,450" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="KeywordsResponses.xlsx.xlsx">
+                        <ueab:ExcelApplicationCard CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="550,450" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" WorkbookPath="KeywordsResponses.xlsx">
                           <ueab:ExcelApplicationCard.Body>
                             <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                               <ActivityAction.Argument>
@@ -269,7 +270,7 @@
                             </ActivityAction>
                           </ueab:ExcelApplicationCard.Body>
                         </ueab:ExcelApplicationCard>
-                        <Assign sap:VirtualizedContainerService.HintSize="688,175" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign sap:VirtualizedContainerService.HintSize="550,175" sap2010:WorkflowViewState.IdRef="Assign_4">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Boolean">[keywordFound]</OutArgument>
                           </Assign.To>
@@ -277,27 +278,27 @@
                             <InArgument x:TypeArguments="x:Boolean">False</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each row" sap:VirtualizedContainerService.HintSize="688,673" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[dtRules.AsEnumerable()]">
+                        <ui:ForEach x:TypeArguments="sd:DataRow" CurrentIndex="{x:Null}" DisplayName="For Each row" sap:VirtualizedContainerService.HintSize="550,673" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[dtRules.AsEnumerable()]">
                           <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="sd:DataRow">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="686,542" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="548,542" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <If Condition="[Not keywordFound AndAlso (CurrentEmail.Subject.ToLower.Contains(row(&quot;Keyword&quot;).ToString.ToLower) OrElse CurrentEmail.Body.ToLower.Contains(row(&quot;Keyword&quot;).ToString.ToLower))]" sap:VirtualizedContainerService.HintSize="652,482" sap2010:WorkflowViewState.IdRef="If_10">
+                                <If Condition="[Not keywordFound AndAlso (CurrentEmail.Subject.ToLower.Contains(row(&quot;Keyword&quot;).ToString.ToLower) OrElse CurrentEmail.Body.ToLower.Contains(row(&quot;Keyword&quot;).ToString.ToLower))]" sap:VirtualizedContainerService.HintSize="514,482" sap2010:WorkflowViewState.IdRef="If_10">
                                   <If.Then>
-                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="650,262" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                    <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="512,262" sap2010:WorkflowViewState.IdRef="Sequence_37">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="616,202" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,202" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                                         <ui:MultipleAssign.AssignOperations>
                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
@@ -330,7 +331,7 @@
                                     </Sequence>
                                   </If.Then>
                                   <If.Else>
-                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="650,90" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                    <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="512,90" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -344,7 +345,7 @@
                             </ActivityAction>
                           </ui:ForEach.Body>
                         </ui:ForEach>
-                        <If Condition="[keywordFound]" sap:VirtualizedContainerService.HintSize="688,2330" sap2010:WorkflowViewState.IdRef="If_11">
+                        <If Condition="[keywordFound]" sap:VirtualizedContainerService.HintSize="550,2607" sap2010:WorkflowViewState.IdRef="If_11">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -352,14 +353,23 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <If.Then>
-                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="650,1023" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                            <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,1300" sap2010:WorkflowViewState.IdRef="Sequence_33">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ TicketID, DateTime.Now.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;),CurrentEmail.From.Address, CurrentEmail.Subject, matchedKeyword }]" DataTable="[auditTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,221" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
-                              <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[responseText]" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="616,514" sap2010:WorkflowViewState.IdRef="SendEmailConnections_11" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;RE: &quot; + CurrentEmail.Subject]" To="[New String(){CurrentEmail.From.ToString}]" UseConnectionService="True">
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ TicketID, DateTime.Now.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;),CurrentEmail.From.Address, CurrentEmail.Subject, matchedKeyword }]" DataTable="[auditTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,221" sap2010:WorkflowViewState.IdRef="AddDataRow_5" />
+                              <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="416,123" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[CurrentEmail.From.ToString]" />
+                              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:String">[EmailAddress]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:String">[CurrentEmail.From.ToString]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[responseText]" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="416,493" sap2010:WorkflowViewState.IdRef="SendEmailConnections_11" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;RE: &quot; + CurrentEmail.Subject]" To="[New List(Of String) From {CurrentEmail.FromAddress.ToString}]" UseConnectionService="True">
                                 <uga:SendEmailConnections.Attachments>
                                   <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
                                 </uga:SendEmailConnections.Attachments>
@@ -377,8 +387,14 @@
                                     </usau:BackupSlot.BackupValues>
                                   </usau:BackupSlot>
                                 </uga:SendEmailConnections.InputTypeBackup>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
                               </uga:SendEmailConnections>
-                              <uga:MarkAsReadUnreadConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" AuthScopesInvalid="False" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Mark Email as Read or Unread" Email="[CurrentEmail]" sap:VirtualizedContainerService.HintSize="616,228" sap2010:WorkflowViewState.IdRef="MarkAsReadUnreadConnections_10" MarkAs="Read" UseConnectionService="True">
+                              <uga:MarkAsReadUnreadConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" AuthScopesInvalid="False" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Mark Email as Read or Unread" Email="[CurrentEmail]" sap:VirtualizedContainerService.HintSize="416,228" sap2010:WorkflowViewState.IdRef="MarkAsReadUnreadConnections_10" MarkAs="Read" UseConnectionService="True">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,14 +405,14 @@
                             </Sequence>
                           </If.Then>
                           <If.Else>
-                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="650,1177" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                            <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,1177" sap2010:WorkflowViewState.IdRef="Sequence_34">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Assign sap:VirtualizedContainerService.HintSize="616,175" sap2010:WorkflowViewState.IdRef="Assign_5">
+                              <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_5">
                                 <Assign.To>
                                   <OutArgument x:TypeArguments="x:String">[matchedKeyword]</OutArgument>
                                 </Assign.To>
@@ -404,8 +420,8 @@
                                   <InArgument x:TypeArguments="x:String">["None (help desk)"]</InArgument>
                                 </Assign.Value>
                               </Assign>
-                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ TicketID, DateTime.Now.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;),CurrentEmail.From.Address, CurrentEmail.Subject, matchedKeyword }]" DataTable="[auditTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="616,221" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
-                              <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Your request has been received.&#xA;We could not automatically identify a solution for your request, so it has been forwarded to the IT Help Desk for further assistance&lt;/SPAN&gt;&lt;SPAN&gt;.&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="616,493" sap2010:WorkflowViewState.IdRef="SendEmailConnections_9" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;RE : &quot; + CurrentEmail.Subject]" To="[{currentEmail.From.ToString()}.AsEnumerable()]" UseConnectionService="True">
+                              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{ TicketID, DateTime.Now.ToString(&quot;yyyy-MM-dd HH:mm:ss&quot;),CurrentEmail.From.Address, CurrentEmail.Subject, matchedKeyword }]" DataTable="[auditTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="416,221" sap2010:WorkflowViewState.IdRef="AddDataRow_6" />
+                              <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Your request has been received.&#xA;We could not automatically identify a solution for your request, so it has been forwarded to the IT Help Desk for further assistance&lt;/SPAN&gt;&lt;SPAN&gt;.&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="416,493" sap2010:WorkflowViewState.IdRef="SendEmailConnections_9" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;RE : &quot; + CurrentEmail.Subject]" To="[{currentEmail.From.ToString()}.AsEnumerable()]" UseConnectionService="True">
                                 <uga:SendEmailConnections.Attachments>
                                   <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
                                 </uga:SendEmailConnections.Attachments>
@@ -424,20 +440,20 @@
                                   </usau:BackupSlot>
                                 </uga:SendEmailConnections.InputTypeBackup>
                               </uga:SendEmailConnections>
-                              <uga:MarkAsReadUnreadConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" AuthScopesInvalid="False" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Mark Email as Read or Unread" Email="[currentEmail]" sap:VirtualizedContainerService.HintSize="616,228" sap2010:WorkflowViewState.IdRef="MarkAsReadUnreadConnections_11" MarkAs="[UiPath.GSuite.Activities.Gmail.Enums.MarkAsReadUnread.Read]" UseConnectionService="True" />
+                              <uga:MarkAsReadUnreadConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" AuthScopesInvalid="False" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Mark Email as Read or Unread" Email="[currentEmail]" sap:VirtualizedContainerService.HintSize="416,228" sap2010:WorkflowViewState.IdRef="MarkAsReadUnreadConnections_11" MarkAs="[UiPath.GSuite.Activities.Gmail.Enums.MarkAsReadUnread.Read]" UseConnectionService="True" />
                             </Sequence>
                           </If.Else>
                         </If>
                       </Sequence>
                     </If.Then>
                     <If.Else>
-                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="722,781" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                      <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="584,781" sap2010:WorkflowViewState.IdRef="Sequence_32">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Your request has been received.&#xA;We could not automatically identify a solution for your request, so it has been forwarded to the IT Help Desk for further assistance&lt;/SPAN&gt;&lt;SPAN&gt;.&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="616,493" sap2010:WorkflowViewState.IdRef="SendEmailConnections_8" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;RE : &quot; + CurrentEmail.Subject]" To="[{currentEmail.From.ToString()}.AsEnumerable()]" UseConnectionService="True">
+                        <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Your request has been received.&#xA;We could not automatically identify a solution for your request, so it has been forwarded to the IT Help Desk for further assistance&lt;/SPAN&gt;&lt;SPAN&gt;.&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="550,493" sap2010:WorkflowViewState.IdRef="SendEmailConnections_8" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;RE : &quot; + CurrentEmail.Subject]" To="[{currentEmail.From.ToString()}.AsEnumerable()]" UseConnectionService="True">
                           <uga:SendEmailConnections.Attachments>
                             <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
                           </uga:SendEmailConnections.Attachments>
@@ -456,7 +472,7 @@
                             </usau:BackupSlot>
                           </uga:SendEmailConnections.InputTypeBackup>
                         </uga:SendEmailConnections>
-                        <uga:MarkAsReadUnreadConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" AuthScopesInvalid="False" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Mark Email as Read or Unread" Email="[currentEmail]" sap:VirtualizedContainerService.HintSize="616,228" sap2010:WorkflowViewState.IdRef="MarkAsReadUnreadConnections_9" MarkAs="[UiPath.GSuite.Activities.Gmail.Enums.MarkAsReadUnread.Read]" UseConnectionService="True" />
+                        <uga:MarkAsReadUnreadConnections ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" AuthScopesInvalid="False" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Mark Email as Read or Unread" Email="[currentEmail]" sap:VirtualizedContainerService.HintSize="550,228" sap2010:WorkflowViewState.IdRef="MarkAsReadUnreadConnections_9" MarkAs="[UiPath.GSuite.Activities.Gmail.Enums.MarkAsReadUnread.Read]" UseConnectionService="True" />
                       </Sequence>
                     </If.Else>
                   </If>
@@ -482,7 +498,7 @@
               </ugagm:FolderArgument>
             </uga:ForEachEmailConnections.Folder>
           </uga:ForEachEmailConnections>
-          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" Subject="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Automation Complete&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="4a3307d1-6b86-480e-892e-4c7d18d7b61c" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="760,505" sap2010:WorkflowViewState.IdRef="SendEmailConnections_10" Importance="Normal" InputType="HTML" SaveAsDraft="False" To="[New String(){&quot;dimitrirpa@gmail.com&quot;}]" UseConnectionService="True">
+          <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" Subject="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;Automation Complete&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="622,505" sap2010:WorkflowViewState.IdRef="SendEmailConnections_10" Importance="Normal" InputType="HTML" SaveAsDraft="False" To="[New String(){&quot;klimovgag@gmail.com&quot;}]" UseConnectionService="True">
             <uga:SendEmailConnections.Attachments>
               <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
             </uga:SendEmailConnections.Attachments>
@@ -509,7 +525,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="794,90" sap2010:WorkflowViewState.IdRef="Sequence_23">
+            <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="656,90" sap2010:WorkflowViewState.IdRef="Sequence_23">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -520,13 +536,13 @@
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="794,1113" sap2010:WorkflowViewState.IdRef="Sequence_25">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="656,1113" sap2010:WorkflowViewState.IdRef="Sequence_25">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <If Condition="[auditTable.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="760,1053" sap2010:WorkflowViewState.IdRef="If_12">
+          <If Condition="[auditTable.Rows.Count &gt; 0]" sap:VirtualizedContainerService.HintSize="622,1053" sap2010:WorkflowViewState.IdRef="If_12">
             <If.Then>
               <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="522,833" sap2010:WorkflowViewState.IdRef="Sequence_26">
                 <sap:WorkflowViewStateService.ViewState>
