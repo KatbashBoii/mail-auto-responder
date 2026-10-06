@@ -120,10 +120,15 @@
       <AssemblyReference>CA4113FF91E_v2_sub_g.v0I0m33gq1S1LrcFy1HBkdZ2</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="RouteEmail" sap:VirtualizedContainerService.HintSize="1140,1472" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="RouteEmail" sap:VirtualizedContainerService.HintSize="776.4000000000001,1542.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="BodyText" />
       <Variable x:TypeArguments="sd:DataRow" Name="routeRows" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -131,7 +136,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="sd:DataRow">[routeRows]</OutArgument>
       </Assign.To>
@@ -139,7 +144,7 @@
         <InArgument x:TypeArguments="sd:DataRow">[in_dtRouting.Select("Department = ' " + in_Department + " ' ").FirstorDefault()]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="450,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+    <Assign sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_RoutedTo]</OutArgument>
       </Assign.To>
@@ -149,11 +154,19 @@
    "klimovgag@gmail.com")]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Dept=[&quot; + in_Department + &quot;] RoutedTo=[&quot; + out_RoutedTo + &quot;]&quot;]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Subject=[&quot; + in_Mail.ThreadId + &quot;]&quot;]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_Mail.MessageId]" />
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,123" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[in_Mail.InternetMessageId]" />
-    <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[string.Format(&quot;&lt;P&gt;&lt;SPAN&gt;&lt;CODE&gt;&amp;quot;From: &amp;quot; + &amp;lt;sender&amp;gt; + vbCrLf + &amp;quot;Subject: &amp;quot; + in_Mail.Subject + vbCrLf + vbCrLf + in_Mail.Body&amp;lt;/sender&amp;gt;&lt;/CODE&gt;&lt;/SPAN&gt;&lt;/P&gt;&quot;)]" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="450,493" sap2010:WorkflowViewState.IdRef="SendEmailConnections_2" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;Fwd: [&quot; + in_Department + &quot;] &quot; + in_Mail.Subject]" To="[New List(Of String) From {in_Mail.FromAddress.ToString}]" UseConnectionService="True">
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Dept=[&quot; + in_Department + &quot;] RoutedTo=[&quot; + out_RoutedTo + &quot;]&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Subject=[&quot; + in_Mail.ThreadId + &quot;]&quot;]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="[in_Mail.MessageId]" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="449.6,122.4" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[in_Mail.InternetMessageId]" />
+    <Assign sap:VirtualizedContainerService.HintSize="449.6,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[BodyText]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["From: " + in_Mail.From.ToString + vbCrLf + "Subject: " + in_Mail.Subject + vbCrLf + vbCrLf + in_Mail.Body]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <uga:SendEmailConnections ArgumentAttachmentPaths="{x:Null}" ArgumentAttachments="{x:Null}" AttachmentPaths="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" ReplyTo="{x:Null}" SingleAttachment="{x:Null}" TextBody="{x:Null}" AttachmentInputMode="UseExisting" AuthScopesInvalid="False" Body="[BodyText]" ConnectionId="53c1dd38-272c-4e22-9b34-2397306d8584" DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="449.6,392.8" sap2010:WorkflowViewState.IdRef="SendEmailConnections_2" Importance="Normal" InputType="HTML" SaveAsDraft="False" Subject="[&quot;Fwd: [&quot; + in_Department + &quot;] &quot; + in_Mail.Subject]" To="[New List(Of String) From {in_Mail.FromAddress.ToString}]" UseConnectionService="True">
       <uga:SendEmailConnections.Attachments>
         <InArgument x:TypeArguments="scg:IEnumerable(upr:IResource)" />
       </uga:SendEmailConnections.Attachments>
@@ -172,6 +185,6 @@
         </usau:BackupSlot>
       </uga:SendEmailConnections.InputTypeBackup>
     </uga:SendEmailConnections>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="450,114" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="We sent the load yes" />
+    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="WriteLine_6" Text="We sent the load yes" />
   </Sequence>
 </Activity>
